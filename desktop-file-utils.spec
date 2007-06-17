@@ -1,21 +1,21 @@
 %define name	desktop-file-utils	
-%define version 0.12
-%define release %mkrel 2
+%define version 0.13
+%define release %mkrel 1
 
-Name: 		%name
-Summary: 	Utilities for working with desktop entries
-Version: 	%version
-Release: 	%release
-Source: 	http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.bz2
+Name:		%name
+Summary:	Utilities for working with desktop entries
+Version:	%version
+Release:	%release
+Source:		http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.bz2
 # (fc) 0.11-5mdv encoding is deprecated
-Patch2: desktop-file-utils-0.11-encoding.patch
+Patch2:		desktop-file-utils-0.11-encoding.patch
 
 Url: 		http://freedesktop.org/Software/desktop-file-utils
 Group:		Graphical desktop/Other
-BUildrequires:	popt-devel glibc-static-devel 
-BuildRequires:  glib2-devel
-BuildRequires:  emacs-bin
-BuildRoot: 	%{_tmppath}/%{name}-%{version}-buildroot
+Buildrequires:	popt-devel glibc-static-devel 
+BuildRequires:	glib2-devel
+BuildRequires:	emacs-bin
+BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 License:	GPL
 
 %description
@@ -56,5 +56,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/*
 %_datadir/emacs/site-lisp/desktop-entry-mode.el*
 %doc AUTHORS NEWS README ChangeLog
-
-
