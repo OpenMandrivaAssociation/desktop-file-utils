@@ -1,11 +1,11 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
-Version:	0.13
+Version:	0.14
 Release:	%mkrel 1
 License:	GPL
 Group:		Graphical desktop/Other
 Url: 		http://freedesktop.org/Software/desktop-file-utils
-Source:		http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.bz2
+Source:		http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.gz
 Buildrequires:	popt-devel glibc-static-devel 
 BuildRequires:	glib2-devel
 BuildRequires:	emacs-bin
