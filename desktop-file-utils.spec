@@ -9,7 +9,6 @@ Source:		http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{v
 Buildrequires:	popt-devel glibc-static-devel 
 BuildRequires:	glib2-devel
 BuildRequires:	emacs-bin
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 desktop-file-utils contains a couple of command line utilities for working
