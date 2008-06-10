@@ -39,7 +39,7 @@ cat > %{buildroot}%{_sysconfdir}/emacs/site-start.d/%{name}.el << EOF
 (add-hook 'desktop-entry-mode-hook 'font-lock-mode)
 EOF
 
-# automatic ldconfig cache update on rpm installs/removals
+# automatic cache update on rpm installs/removals
 # (see http://wiki.mandriva.com/en/Rpm_filetriggers)
 install -d %buildroot%{_var}/lib/rpm/filetriggers
 cat > %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database.filter << EOF
