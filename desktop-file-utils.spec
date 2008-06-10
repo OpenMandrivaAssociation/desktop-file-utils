@@ -1,7 +1,7 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
 Version:	0.15
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPL
 Group:		Graphical desktop/Other
 Url: 		http://freedesktop.org/Software/desktop-file-utils
@@ -39,6 +39,28 @@ cat > %{buildroot}%{_sysconfdir}/emacs/site-start.d/%{name}.el << EOF
 (add-hook 'desktop-entry-mode-hook 'font-lock-mode)
 EOF
 
+# automatic ldconfig cache update on rpm installs/removals
+# (see http://wiki.mandriva.com/en/Rpm_filetriggers)
+install -d %buildroot%{_var}/lib/rpm/filetriggers
+cat > %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database.filter << EOF
+^./usr/share/applications/.*\.desktop$
+EOF
+cat > %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database.script << EOF
+#!/bin/sh
+/usr/bin/update-desktop-database /usr/share/applications > /dev/null
+EOF
+chmod 755 %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database.script
+
+install -d %buildroot%{_var}/lib/rpm/filetriggers
+cat > %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database-kde3.filter << EOF
+^./opt/kde3/share/applications/.*\.desktop$
+EOF
+cat > %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database-kde3.script << EOF
+#!/bin/sh
+/usr/bin/update-desktop-database /opt/kde3/share/applications > /dev/null
+EOF
+chmod 755 %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database-kde3.script
+
 %clean
 rm -rf %{buildroot}
 
@@ -48,3 +70,5 @@ rm -rf %{buildroot}
 %config(noreplace) %{_sysconfdir}/emacs/site-start.d/%{name}.el
 %{_bindir}/*
 %{_datadir}/emacs/site-lisp/desktop-entry-mode.el*
+%{_var}/lib/rpm/filetriggers/update-desktop-database.*
+%{_var}/lib/rpm/filetriggers/update-desktop-database-kde3.*
