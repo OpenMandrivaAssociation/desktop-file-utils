@@ -1,12 +1,11 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
-Version:	0.15
-Release:	%mkrel 6
+Version:	0.16
+Release:	%mkrel 1
 License:	GPL
 Group:		Graphical desktop/Other
 Url: 		http://freedesktop.org/Software/desktop-file-utils
-Source:		http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.gz
-Patch0:     desktop-file-utils-0.15-fix-format.patch
+Source:		http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.bz2
 Buildrequires:	popt-devel glibc-static-devel 
 BuildRequires:	glib2-devel
 BuildRequires:	emacs-bin
@@ -22,7 +21,6 @@ desktop-file-validate takes a single argument, the file to validate.
 
 %prep
 %setup -q
-%patch0 -p0
 %build
 %configure2_5x
 
