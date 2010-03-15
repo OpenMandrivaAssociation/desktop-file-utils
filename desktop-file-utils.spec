@@ -2,7 +2,7 @@ Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
 Version:	0.16
 Release:	%mkrel 1
-License:	GPL
+License:	GPLv2+
 Group:		Graphical desktop/Other
 Url: 		http://freedesktop.org/Software/desktop-file-utils
 Source:		http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.bz2
@@ -48,17 +48,8 @@ cat > %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database.script << E
 #!/bin/sh
 /usr/bin/update-desktop-database /usr/share/applications > /dev/null
 EOF
+#gw: for 2010.1 RC, redirect stderr warnings:  2> /dev/null
 chmod 755 %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database.script
-
-install -d %buildroot%{_var}/lib/rpm/filetriggers
-cat > %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database-kde3.filter << EOF
-^./opt/kde3/share/applications/.*\.desktop$
-EOF
-cat > %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database-kde3.script << EOF
-#!/bin/sh
-/usr/bin/update-desktop-database /opt/kde3/share/applications > /dev/null
-EOF
-chmod 755 %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database-kde3.script
 
 %clean
 rm -rf %{buildroot}
@@ -70,4 +61,3 @@ rm -rf %{buildroot}
 %{_bindir}/*
 %{_datadir}/emacs/site-lisp/desktop-entry-mode.el*
 %{_var}/lib/rpm/filetriggers/update-desktop-database.*
-%{_var}/lib/rpm/filetriggers/update-desktop-database-kde3.*
