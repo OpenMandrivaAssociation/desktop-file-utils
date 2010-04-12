@@ -1,7 +1,7 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
 Version:	0.16
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url: 		http://freedesktop.org/Software/desktop-file-utils
@@ -46,9 +46,8 @@ cat > %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database.filter << E
 EOF
 cat > %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database.script << EOF
 #!/bin/sh
-/usr/bin/update-desktop-database /usr/share/applications > /dev/null
+/usr/bin/update-desktop-database /usr/share/applications > /dev/null 2> /dev/null
 EOF
-#gw: for 2010.1 RC, redirect stderr warnings:  2> /dev/null
 chmod 755 %buildroot%{_var}/lib/rpm/filetriggers/update-desktop-database.script
 
 %clean
