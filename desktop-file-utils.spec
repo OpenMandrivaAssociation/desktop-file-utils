@@ -1,7 +1,7 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
 Version:	0.18
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url: 		http://freedesktop.org/Software/desktop-file-utils
@@ -43,10 +43,10 @@ EOF
 %post
 %{_bindir}/update-desktop-database %{_datadir}/applications > /dev/null 2> /dev/null
 
-%triggerin -- /usr/share/applications/*.desktop
+%triggerin -- %{_datadir}/applications/*.desktop, %{_datadir}/applications/*/*.desktop
 %{_bindir}/update-desktop-database %{_datadir}/applications > /dev/null 2> /dev/null
 
-%triggerpostun -- /usr/share/applications/*.desktop
+%triggerpostun -- %{_datadir}/applications/*.desktop, %{_datadir}/applications/*/*.desktop
 %{_bindir}/update-desktop-database %{_datadir}/applications > /dev/null 2> /dev/null
 
 %clean
