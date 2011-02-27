@@ -1,7 +1,7 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
 Version:	0.18
-Release:	%mkrel 3
+Release:	%mkrel 4
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url: 		http://freedesktop.org/Software/desktop-file-utils
