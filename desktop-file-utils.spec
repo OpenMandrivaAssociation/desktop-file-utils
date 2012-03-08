@@ -1,6 +1,6 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
-Version:	0.19
+Version:	0.20
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		Graphical desktop/Other
