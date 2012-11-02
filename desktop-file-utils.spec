@@ -1,15 +1,15 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
-Version:	0.20
-Release:	%mkrel 1
+Version:	0.21
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
-Url: 		http://freedesktop.org/Software/desktop-file-utils
-Source:		http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
-Buildrequires:	popt-devel glibc-static-devel 
+Url:		http://freedesktop.org/Software/desktop-file-utils
+Source0:	http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
+Buildrequires:	popt-devel
+BuildRequires:	glibc-static-devel 
 BuildRequires:	glib2-devel
 BuildRequires:	emacs-bin
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 desktop-file-utils contains a couple of command line utilities for working
@@ -28,8 +28,6 @@ desktop-file-validate takes a single argument, the file to validate.
 %make
 
 %install
-rm -rf %{buildroot}
-
 %makeinstall_std
 
 mkdir -p %{buildroot}%{_sysconfdir}/emacs/site-start.d/
@@ -49,11 +47,7 @@ EOF
 %triggerpostun -- %{_datadir}/applications/*.desktop, %{_datadir}/applications/*/*.desktop
 %{_bindir}/update-desktop-database %{_datadir}/applications > /dev/null 2> /dev/null
 
-%clean
-rm -rf %{buildroot}
-
 %files 
-%defattr(-,root,root)
 %doc AUTHORS NEWS README ChangeLog
 %config(noreplace) %{_sysconfdir}/emacs/site-start.d/%{name}.el
 %{_bindir}/*
