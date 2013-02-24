@@ -1,15 +1,15 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
-Version:	0.20
-Release:	%mkrel 1
+Version:	0.21
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/Other
-Url: 		http://freedesktop.org/Software/desktop-file-utils
-Source:		http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
-Buildrequires:	popt-devel glibc-static-devel 
+Url:		http://freedesktop.org/Software/desktop-file-utils
+Source0:	http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
+BuildRequires:	popt-devel
+BuildRequires:	glibc-static-devel
 BuildRequires:	glib2-devel
 BuildRequires:	emacs-bin
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 desktop-file-utils contains a couple of command line utilities for working
@@ -28,8 +28,6 @@ desktop-file-validate takes a single argument, the file to validate.
 %make
 
 %install
-rm -rf %{buildroot}
-
 %makeinstall_std
 
 mkdir -p %{buildroot}%{_sysconfdir}/emacs/site-start.d/
@@ -49,24 +47,19 @@ EOF
 %triggerpostun -- %{_datadir}/applications/*.desktop, %{_datadir}/applications/*/*.desktop
 %{_bindir}/update-desktop-database %{_datadir}/applications > /dev/null 2> /dev/null
 
-%clean
-rm -rf %{buildroot}
-
-%files 
-%defattr(-,root,root)
+%files
 %doc AUTHORS NEWS README ChangeLog
 %config(noreplace) %{_sysconfdir}/emacs/site-start.d/%{name}.el
 %{_bindir}/*
 %_mandir/man1/*
 %{_datadir}/emacs/site-lisp/desktop-entry-mode.el*
 
-
 %changelog
-* Thu Mar 08 2012 Götz Waschk <waschk@mandriva.org> 0.20-1mdv2012.0
+* Thu Mar 08 2012 GÃ¶tz Waschk <waschk@mandriva.org> 0.20-1mdv2012.0
 + Revision: 783407
 - new version
 
-* Thu Dec 29 2011 Götz Waschk <waschk@mandriva.org> 0.19-1
+* Thu Dec 29 2011 GÃ¶tz Waschk <waschk@mandriva.org> 0.19-1
 + Revision: 748193
 - new version
 - xz tarball
@@ -87,16 +80,16 @@ rm -rf %{buildroot}
 + Revision: 637219
 - convert rpm file trigger to rpm5 standard trigger
 
-* Sat Jan 15 2011 Götz Waschk <waschk@mandriva.org> 0.18-1
+* Sat Jan 15 2011 GÃ¶tz Waschk <waschk@mandriva.org> 0.18-1
 + Revision: 631100
 - update to new version 0.18
 
-* Thu Sep 30 2010 Götz Waschk <waschk@mandriva.org> 0.17-1mdv2011.0
+* Thu Sep 30 2010 GÃ¶tz Waschk <waschk@mandriva.org> 0.17-1mdv2011.0
 + Revision: 582144
 - new version
 - add man pages
 
-* Mon Apr 12 2010 Götz Waschk <waschk@mandriva.org> 0.16-2mdv2010.1
+* Mon Apr 12 2010 GÃ¶tz Waschk <waschk@mandriva.org> 0.16-2mdv2010.1
 + Revision: 533661
 - don't print desktop entry validation warnings anymore
 - update license
@@ -111,7 +104,7 @@ rm -rf %{buildroot}
 + Revision: 413348
 - rebuild
 
-* Sat Mar 07 2009 Nicolas Lécureuil <nlecureuil@mandriva.com> 0.15-5mdv2009.1
+* Sat Mar 07 2009 Nicolas LÃ©cureuil <nlecureuil@mandriva.com> 0.15-5mdv2009.1
 + Revision: 350876
 - Fix format string
 - Fix format string
@@ -127,7 +120,7 @@ rm -rf %{buildroot}
 + Revision: 217390
 - add rpm filetrigger running update-desktop-database when rpm install/remove .desktop files
 
-* Thu Mar 06 2008 Götz Waschk <waschk@mandriva.org> 0.15-1mdv2008.1
+* Thu Mar 06 2008 GÃ¶tz Waschk <waschk@mandriva.org> 0.15-1mdv2008.1
 + Revision: 180329
 - new version
 
@@ -150,12 +143,12 @@ rm -rf %{buildroot}
 - new version
 
 
-* Mon Nov 27 2006 Götz Waschk <waschk@mandriva.org> 0.12-2mdv2007.0
+* Mon Nov 27 2006 GÃ¶tz Waschk <waschk@mandriva.org> 0.12-2mdv2007.0
 + Revision: 87395
 - bot rebuild
 - Import desktop-file-utils
 
-* Mon Nov 27 2006 G�tz Waschk <waschk@mandriva.org> 0.12-1mdv2007.1
+* Mon Nov 27 2006 Götz Waschk <waschk@mandriva.org> 0.12-1mdv2007.1
 - unpack patch
 - drop patches 0,1
 - fix source URL
@@ -167,16 +160,16 @@ rm -rf %{buildroot}
 * Thu Jun 22 2006 Frederic Crozat <fcrozat@mandriva.com> 0.11-4mdv2007.0
 - Patch1: fix typo in valid categories
 
-* Sat Jun 10 2006 G�tz Waschk <waschk@mandriva.org> 0.11-3mdv2007.0
+* Sat Jun 10 2006 Götz Waschk <waschk@mandriva.org> 0.11-3mdv2007.0
 - update the patch
 
-* Sat Jun 10 2006 G�tz Waschk <waschk@mandriva.org> 0.11-2mdv2007.0
+* Sat Jun 10 2006 Götz Waschk <waschk@mandriva.org> 0.11-2mdv2007.0
 - fix check for valid categories
 
-* Fri Jun 09 2006 Götz Waschk <waschk@mandriva.org> 0.11-1mdv2007.0
+* Fri Jun 09 2006 GÃ¶tz Waschk <waschk@mandriva.org> 0.11-1mdv2007.0
 - New release 0.11
 
-* Thu Nov 25 2004 G�tz Waschk <waschk@linux-mandrake.com> 0.10-2mdk
+* Thu Nov 25 2004 Götz Waschk <waschk@linux-mandrake.com> 0.10-2mdk
 - fix buildrequires
 
 * Wed Nov 24 2004 Frederic Crozat <fcrozat@mandrakesoft.com> 0.10-1mdk
@@ -186,27 +179,26 @@ rm -rf %{buildroot}
 * Fri Oct 29 2004 Laurent MONTEL <lmontel@mandrakesoft.com> 0.9-1mdk
 - 0.9
 
-* Wed Aug 18 2004 G�tz Waschk <waschk@linux-mandrake.com> 0.7-4mdk
+* Wed Aug 18 2004 Götz Waschk <waschk@linux-mandrake.com> 0.7-4mdk
 - fix emascs site-start script once and for all
 
-* Wed Jul 28 2004 G�tz Waschk <waschk@linux-mandrake.com> 0.7-3mdk
+* Wed Jul 28 2004 Götz Waschk <waschk@linux-mandrake.com> 0.7-3mdk
 - another fix for the site-start script
 
-* Wed Jul 28 2004 G�tz Waschk <waschk@linux-mandrake.com> 0.7-2mdk
+* Wed Jul 28 2004 Götz Waschk <waschk@linux-mandrake.com> 0.7-2mdk
 - arrgh, fix emacs sitestart script
 
-* Wed Jul 28 2004 G�tz Waschk <waschk@linux-mandrake.com> 0.7-1mdk
+* Wed Jul 28 2004 Götz Waschk <waschk@linux-mandrake.com> 0.7-1mdk
 - add emacs lisp files
 - buildrequires emacs
 - New release 0.7
 
-* Sat Jul 17 2004 G�tz Waschk <waschk@linux-mandrake.com> 0.6-1mdk
+* Sat Jul 17 2004 Götz Waschk <waschk@linux-mandrake.com> 0.6-1mdk
 - reenable libtoolize
 - New release 0.6
 
-* Sat Apr 17 2004 G�tz Waschk <waschk@linux-mandrake.com> 0.5-1mdk
+* Sat Apr 17 2004 Götz Waschk <waschk@linux-mandrake.com> 0.5-1mdk
 - don't run libtoolize
 - add gnome-vfs2 stuff
 - fix URL
 - new version
-
