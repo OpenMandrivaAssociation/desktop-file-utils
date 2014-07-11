@@ -1,7 +1,7 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
 Version:	0.22
-Release:	6
+Release:	7
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		http://freedesktop.org/Software/desktop-file-utils
