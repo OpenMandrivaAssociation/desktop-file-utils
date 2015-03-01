@@ -1,12 +1,12 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
 Version:	0.22
-Release:	8
+Release:	9
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		http://freedesktop.org/Software/desktop-file-utils
 Source0:	http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
-
+Patch0:		desktop-file-utils-0.22-add-Cinnamon-EDE-LXQt.patch
 BuildRequires:	emacs-bin
 BuildRequires:	glibc-static-devel
 BuildRequires:	pkgconfig(glib-2.0)
@@ -22,9 +22,10 @@ desktop-file-validate takes a single argument, the file to validate.
 
 %prep
 %setup -q
+%apply_patches
 
 %build
-%configure2_5x
+%configure
 
 %make
 
