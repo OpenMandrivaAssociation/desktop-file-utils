@@ -1,16 +1,17 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
 Version:	0.22
-Release:	10
+Release:	11
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		http://freedesktop.org/Software/desktop-file-utils
 Source0:	http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
-Patch0:		desktop-file-utils-0.22-add-Cinnamon-EDE-LXQt.patch
+Patch0:		desktop-file-utils-0.22-add-more-desktops.patch
 BuildRequires:	emacs-bin
 BuildRequires:	glibc-static-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(popt)
+Requires(post):	setup
 
 %description
 desktop-file-utils contains a couple of command line utilities for working
@@ -55,4 +56,3 @@ EOF
 %{_bindir}/*
 %{_mandir}/man1/*
 %{_datadir}/emacs/site-lisp/desktop-entry-mode.el*
-

@@ -1,0 +1,20 @@
+diff -Naur desktop-file-utils-0.22/src/validate.c desktop-file-utils-0.22.tpg/src/validate.c
+--- desktop-file-utils-0.22/src/validate.c	2013-07-19 07:19:42.000000000 +0000
++++ desktop-file-utils-0.22.tpg/src/validate.c	2016-02-02 12:00:54.944033936 +0000
+@@ -363,7 +363,7 @@
+ };
+ 
+ static const char *show_in_registered[] = {
+-  "GNOME", "KDE", "LXDE", "MATE", "Razor", "ROX", "TDE", "Unity", "XFCE", "Old"
++  "GNOME", "KDE", "LXDE", "LXQt", "MATE", "Razor", "ROX", "TDE", "Unity", "XFCE", "Cinnamon", "EDE", "Old", "OPENBOX"
+ };
+ 
+ static struct {
+@@ -518,6 +518,7 @@
+   { "Adult",                  FALSE, FALSE, FALSE, { NULL }, { NULL } },
+   { "Core",                   FALSE, FALSE, FALSE, { NULL }, { NULL } },
+   { "KDE",                    FALSE, FALSE, FALSE, { NULL }, { "Qt", NULL } },
++  { "LXQt",                   FALSE, FALSE, FALSE, { NULL }, { "Qt", NULL } },
+   { "GNOME",                  FALSE, FALSE, FALSE, { NULL }, { "GTK", NULL } },
+   { "XFCE",                   FALSE, FALSE, FALSE, { NULL }, { "GTK", NULL } },
+   { "GTK",                    FALSE, FALSE, FALSE, { NULL }, { NULL } },
