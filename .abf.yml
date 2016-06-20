@@ -1,4 +1,2 @@
-removed_sources:
-  desktop-file-utils-0.20.tar.xz: 0be40d8ad20e9dc56c2649bd64ee30b36198ccd7
 sources:
-  desktop-file-utils-0.22.tar.xz: 617f130091dbcc5e739d82ee48e2b3932da5957d
+  desktop-file-utils-0.23.tar.xz: 10e9df65fdf2b896ce4d5f16616ea0df7c01d8f8
