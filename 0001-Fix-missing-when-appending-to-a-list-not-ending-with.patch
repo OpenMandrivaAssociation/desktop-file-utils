@@ -1,0 +1,35 @@
+From 24650458e1492f385cdf662bb6d71e52d068f857 Mon Sep 17 00:00:00 2001
+From: Pascal Terjan <pterjan@google.com>
+Date: Wed, 17 Aug 2016 21:52:48 -0400
+Subject: [PATCH 1/1] Fix missing ; when appending to a list not ending with
+ one
+
+---
+ src/keyfileutils.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/src/keyfileutils.c b/src/keyfileutils.c
+index a6891ee..6cc2c7d 100644
+--- a/src/keyfileutils.c
++++ b/src/keyfileutils.c
+@@ -187,9 +187,14 @@ dfu_key_file_merge_list (GKeyFile   *keyfile,
+ 
+   value = g_key_file_get_value (keyfile, group, key, NULL);
+ 
+-  if (value)
+-    str = g_strconcat (value, to_merge, ";", NULL);
+-  else
++  if (value) {
++    size_t l = strlen(value);
++    if (l > 0 && value[l-1] != ';') {
++      str = g_strconcat (value, ";", to_merge, ";", NULL);
++    } else {
++      str = g_strconcat (value, to_merge, ";", NULL);
++    }
++  } else
+     str = g_strconcat (to_merge, ";", NULL);
+ 
+   g_key_file_set_value (keyfile, group, key, str);
+-- 
+2.8.0.rc3.226.g39d4020
+

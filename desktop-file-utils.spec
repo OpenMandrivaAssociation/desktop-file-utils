@@ -1,17 +1,21 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
 Version:	0.23
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		http://freedesktop.org/Software/desktop-file-utils
 Source0:	http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
 Patch0:		desktop-file-utils-0.22-add-more-desktops.patch
+# https://bugs.freedesktop.org/show_bug.cgi?id=97388
+Patch1:		0001-Fix-missing-when-appending-to-a-list-not-ending-with.patch
 BuildRequires:	emacs-bin
 BuildRequires:	glibc-static-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(popt)
-Requires(post):	setup
+Requires:	setup
+Requires:	coreutils
+Requires:	util-linux
 
 %description
 desktop-file-utils contains a couple of command line utilities for working
@@ -40,9 +44,6 @@ cat > %{buildroot}%{_sysconfdir}/emacs/site-start.d/%{name}.el << EOF
 '("\\\\.desktop\\\\(\\\\.in\\\\)?$" . desktop-entry-mode))
 (add-hook 'desktop-entry-mode-hook 'font-lock-mode)
 EOF
-
-%post
-%{_bindir}/update-desktop-database %{_datadir}/applications > /dev/null 2> /dev/null
 
 %triggerin -- %{_datadir}/applications/*.desktop, %{_datadir}/applications/*/*.desktop
 %{_bindir}/update-desktop-database %{_datadir}/applications > /dev/null 2> /dev/null
