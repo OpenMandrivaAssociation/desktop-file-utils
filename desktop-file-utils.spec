@@ -1,7 +1,9 @@
+%global optflags %{optflags} --rtlib=compiler-rt
+
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
 Version:	0.23
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		http://freedesktop.org/Software/desktop-file-utils
