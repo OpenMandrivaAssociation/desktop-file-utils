@@ -3,7 +3,7 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
 Version:	0.23
-Release:	3
+Release:	4
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		http://freedesktop.org/Software/desktop-file-utils
@@ -11,6 +11,7 @@ Source0:	http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{v
 Patch0:		desktop-file-utils-0.22-add-more-desktops.patch
 # https://bugs.freedesktop.org/show_bug.cgi?id=97388
 Patch1:		0001-Fix-missing-when-appending-to-a-list-not-ending-with.patch
+Patch2:		desktop-file-utils-0.23-font-media.patch
 BuildRequires:	emacs-bin
 BuildRequires:	glibc-static-devel
 BuildRequires:	pkgconfig(glib-2.0)
