@@ -2,8 +2,8 @@
 
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
-Version:	0.23
-Release:	5
+Version:	0.24
+Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		http://freedesktop.org/Software/desktop-file-utils
@@ -16,9 +16,6 @@ BuildRequires:	emacs-bin
 BuildRequires:	glibc-static-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(popt)
-Requires:	setup
-Requires:	coreutils
-Requires:	util-linux
 
 %description
 desktop-file-utils contains a couple of command line utilities for working
@@ -29,16 +26,15 @@ Right now the only documentation is "desktop-file-install --help".
 desktop-file-validate takes a single argument, the file to validate. 
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 %build
 %configure
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 mkdir -p %{buildroot}%{_sysconfdir}/emacs/site-start.d/
 cat > %{buildroot}%{_sysconfdir}/emacs/site-start.d/%{name}.el << EOF
