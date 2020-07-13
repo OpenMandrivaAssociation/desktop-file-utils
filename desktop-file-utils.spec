@@ -8,10 +8,12 @@ License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		http://freedesktop.org/Software/desktop-file-utils
 Source0:	http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
+Patch0:		desktop-file-utils-registered-categories.patch
 BuildRequires:	emacs-bin
 BuildRequires:	glibc-static-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(popt)
+BuildRequires:	meson
 
 %description
 desktop-file-utils contains a couple of command line utilities for working
@@ -25,12 +27,11 @@ desktop-file-validate takes a single argument, the file to validate.
 %autosetup -p1
 
 %build
-%configure
-
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 mkdir -p %{buildroot}%{_sysconfdir}/emacs/site-start.d/
 cat > %{buildroot}%{_sysconfdir}/emacs/site-start.d/%{name}.el << EOF
@@ -41,8 +42,11 @@ cat > %{buildroot}%{_sysconfdir}/emacs/site-start.d/%{name}.el << EOF
 EOF
 
 # automatic cache update on rpm installs/removals
-%transfiletriggerin -- %{_datadir}/applications/
-%{_bindir}/update-desktop-database %{_datadir}/applications > /dev/null 2> /dev/null
+%transfiletriggerin -- %{_datadir}/applications
+%{_bindir}/update-desktop-database --quiet %{_datadir}/applications ||:
+
+%transfiletriggerpostun -- %{_datadir}/applications
+%{_bindir}/update-desktop-database --quiet %{_datadir}/applications ||:
 
 %files
 %doc AUTHORS NEWS README ChangeLog
