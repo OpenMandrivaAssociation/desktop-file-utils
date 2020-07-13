@@ -2,7 +2,7 @@
 
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
-Version:	0.24
+Version:	0.26
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
@@ -40,10 +40,8 @@ cat > %{buildroot}%{_sysconfdir}/emacs/site-start.d/%{name}.el << EOF
 (add-hook 'desktop-entry-mode-hook 'font-lock-mode)
 EOF
 
-%triggerin -- %{_datadir}/applications/*.desktop, %{_datadir}/applications/*/*.desktop
-%{_bindir}/update-desktop-database %{_datadir}/applications > /dev/null 2> /dev/null
-
-%triggerpostun -- %{_datadir}/applications/*.desktop, %{_datadir}/applications/*/*.desktop
+# automatic cache update on rpm installs/removals
+%transfiletriggerin -- %{_datadir}/applications/
 %{_bindir}/update-desktop-database %{_datadir}/applications > /dev/null 2> /dev/null
 
 %files
