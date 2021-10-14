@@ -3,7 +3,7 @@
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
 Version:	0.26
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		Graphical desktop/Other
 Url:		http://freedesktop.org/Software/desktop-file-utils
@@ -52,5 +52,5 @@ EOF
 %doc AUTHORS NEWS README ChangeLog
 %config(noreplace) %{_sysconfdir}/emacs/site-start.d/%{name}.el
 %{_bindir}/*
-%{_mandir}/man1/*
+%doc %{_mandir}/man1/*
 %{_datadir}/emacs/site-lisp/desktop-entry-mode.el*
