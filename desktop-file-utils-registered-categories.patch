@@ -1,19 +1,12 @@
---- ./src/validate.c.orig	2019-08-01 20:53:16.583338594 +0300
-+++ ./src/validate.c		2019-08-01 20:53:44.573646209 +0300
-@@ -377,7 +377,7 @@ static DesktopKeyDefinition registered_action_keys[] = {
+diff -uraN desktop-file-utils-0.27/src/validate.c omv-desktop-file-utils-0.27/src/validate.c
+--- desktop-file-utils-0.27/src/validate.c	2023-10-05 17:07:13.000000000 +0200
++++ omv-desktop-file-utils-0.27/src/validate.c	2023-12-17 17:07:41.771065410 +0100
+@@ -380,7 +380,7 @@
  
  /* This should be the same list as in xdg-specs/menu/menu-spec.xml */
  static const char *show_in_registered[] = {
--    "GNOME", "GNOME-Classic", "GNOME-Flashback", "KDE", "LXDE", "LXQt", "MATE", "Razor", "ROX", "TDE", "Unity", "XFCE", "EDE", "Cinnamon", "Pantheon", "Budgie", "Enlightenment", "Deepin", "Old"
-+    "GNOME", "GNOME-Classic", "GNOME-Flashback", "KDE", "LXDE", "LXQt", "MATE", "Razor", "ROX", "TDE", "Unity", "XFCE", "EDE", "Cinnamon", "Pantheon", "Budgie", "Enlightenment", "Deepin", "Old", "OPENBOX"
+-    "GNOME", "GNOME-Classic", "GNOME-Flashback", "KDE", "LXDE", "LXQt", "MATE", "Razor", "ROX", "TDE", "Unity", "XFCE", "EDE", "Cinnamon", "Pantheon", "Budgie", "Enlightenment", "DDE", "Endless", "Old"
++    "GNOME", "GNOME-Classic", "GNOME-Flashback", "KDE", "LXDE", "LXQt", "MATE", "Razor", "ROX", "TDE", "Unity", "XFCE", "EDE", "Cinnamon", "Pantheon", "Budgie", "Enlightenment", "DDE", "Endless", "Old", "OPENBOX"
  };
  
  static struct {
-@@ -522,6 +522,7 @@ static struct {
-   { "Adult",                  FALSE, FALSE, FALSE, { NULL }, { NULL } },
-   { "Core",                   FALSE, FALSE, FALSE, { NULL }, { NULL } },
-   { "KDE",                    FALSE, FALSE, FALSE, { NULL }, { "Qt", NULL } },
-+  { "LXQt",                   FALSE, FALSE, FALSE, { NULL }, { "Qt", NULL } },
-   { "GNOME",                  FALSE, FALSE, FALSE, { NULL }, { "GTK", NULL } },
-   { "XFCE",                   FALSE, FALSE, FALSE, { NULL }, { "GTK", NULL } },
-   { "GTK",                    FALSE, FALSE, FALSE, { NULL }, { NULL } },
