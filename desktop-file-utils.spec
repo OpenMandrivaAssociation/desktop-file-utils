@@ -6,7 +6,7 @@ Version:	0.27
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
-Url:		http://freedesktop.org/Software/desktop-file-utils
+Url:		https://freedesktop.org/Software/desktop-file-utils
 Source0:	http://freedesktop.org/software/desktop-file-utils/releases/%{name}-%{version}.tar.xz
 Patch0:		desktop-file-utils-registered-categories.patch
 BuildRequires:	emacs-bin
