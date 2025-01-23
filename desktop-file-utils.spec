@@ -2,7 +2,7 @@
 
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
-Version:	0.27
+Version:	0.28
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
