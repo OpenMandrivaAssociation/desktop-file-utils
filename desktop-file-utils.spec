@@ -1,8 +1,6 @@
-%global optflags %{optflags} -Oz --rtlib=compiler-rt
-
 Summary:	Utilities for working with desktop entries
 Name:		desktop-file-utils
-Version:	0.27
+Version:	0.28
 Release:	1
 License:	GPLv2+
 Group:		Graphical desktop/Other
@@ -13,7 +11,7 @@ BuildRequires:	emacs-bin
 BuildRequires:	glibc-static-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(popt)
-BuildRequires:	meson
+BuildSystem:	meson
 
 %description
 desktop-file-utils contains a couple of command line utilities for working
@@ -23,16 +21,7 @@ implementation requires Unicode utilities and such.
 Right now the only documentation is "desktop-file-install --help".
 desktop-file-validate takes a single argument, the file to validate. 
 
-%prep
-%autosetup -p1
-
-%build
-%meson
-%meson_build
-
-%install
-%meson_install
-
+%install -a
 mkdir -p %{buildroot}%{_sysconfdir}/emacs/site-start.d/
 cat > %{buildroot}%{_sysconfdir}/emacs/site-start.d/%{name}.el << EOF
 (autoload 'desktop-entry-mode "desktop-entry-mode" "Desktop Entry mode" t)

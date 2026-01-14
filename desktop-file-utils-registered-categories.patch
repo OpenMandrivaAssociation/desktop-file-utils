@@ -1,12 +1,12 @@
-diff -uraN desktop-file-utils-0.27/src/validate.c omv-desktop-file-utils-0.27/src/validate.c
---- desktop-file-utils-0.27/src/validate.c	2023-10-05 17:07:13.000000000 +0200
-+++ omv-desktop-file-utils-0.27/src/validate.c	2023-12-17 17:07:41.771065410 +0100
-@@ -380,7 +380,7 @@
+diff -up desktop-file-utils-0.28/src/validate.c.1~ desktop-file-utils-0.28/src/validate.c
+--- desktop-file-utils-0.28/src/validate.c.1~	2024-10-25 22:52:48.000000000 +0200
++++ desktop-file-utils-0.28/src/validate.c	2026-01-14 13:26:21.375027126 +0100
+@@ -386,7 +386,7 @@ static DesktopKeyDefinition registered_a
  
  /* This should be the same list as in xdg-specs/menu/menu-spec.xml */
  static const char *show_in_registered[] = {
--    "GNOME", "GNOME-Classic", "GNOME-Flashback", "KDE", "LXDE", "LXQt", "MATE", "Razor", "ROX", "TDE", "Unity", "XFCE", "EDE", "Cinnamon", "Pantheon", "Budgie", "Enlightenment", "DDE", "Endless", "Old"
-+    "GNOME", "GNOME-Classic", "GNOME-Flashback", "KDE", "LXDE", "LXQt", "MATE", "Razor", "ROX", "TDE", "Unity", "XFCE", "EDE", "Cinnamon", "Pantheon", "Budgie", "Enlightenment", "DDE", "Endless", "Old", "OPENBOX"
+-    "COSMIC", "GNOME", "GNOME-Classic", "GNOME-Flashback", "KDE", "LXDE", "LXQt", "MATE", "Razor", "ROX", "TDE", "Unity", "XFCE", "EDE", "Cinnamon", "Pantheon", "Budgie", "Enlightenment", "DDE", "Endless", "Old"
++    "COSMIC", "GNOME", "GNOME-Classic", "GNOME-Flashback", "KDE", "LXDE", "LXQt", "MATE", "Razor", "ROX", "TDE", "Unity", "XFCE", "EDE", "Cinnamon", "Pantheon", "Budgie", "Enlightenment", "DDE", "Endless", "Old", "OPENBOX"
  };
  
  static struct {
